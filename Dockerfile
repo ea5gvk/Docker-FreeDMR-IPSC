@@ -5,7 +5,7 @@ COPY config /opt/
 
 RUN useradd -u 54000 radio && \
         apt-get update && \
-        apt-get install -y  git gcc g++ musl-dev python2 wget make && \
+        apt-get install -y  git gcc g++ python2 wget make && \
         cd /opt && \
 	wget https://bootstrap.pypa.io/pip/2.7/get-pip.py && \
 	python2 ./get-pip.py && \
@@ -24,7 +24,7 @@ RUN useradd -u 54000 radio && \
 	cd DMRGateway && \
 	git reset --hard 6e89e4922f8c5eb7ec3797729a82137d70bc8940 && \
 	make && \
-	apt-get remove -y musl-dev gcc g++ make git wget && \
+	apt-get remove -y  gcc g++ make git wget && \
 	apt-get -y autoremove && \
 	apt-get -y purge && \
 	rm -rvf /var/cache/apt/archives/*  && \
