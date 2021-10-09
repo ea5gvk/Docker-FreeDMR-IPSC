@@ -20,7 +20,7 @@ RUN useradd -u 54000 radio && \
 	git checkout HB_Bridge && \
 	sh ./mk-required && \
 	cd .. && \
-	git clone https://gitlab.hacknix.net/hacknix/DMRGateway.git && \
+	git clone https://github.com/g4klx/DMRGateway.git && \
 	cd DMRGateway && \
 	git reset --hard 6e89e4922f8c5eb7ec3797729a82137d70bc8940 && \
 	make && \
