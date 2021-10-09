@@ -5,7 +5,7 @@ COPY config /opt/
 
 RUN useradd -u 54000 radio && \
         apt-get update && \
-        apt-get install -y  git gcc g++ python2 wget make && \
+        apt-get install -y  git gcc g++ python2 python2-dev wget make && \
         cd /opt && \
 	wget https://bootstrap.pypa.io/pip/2.7/get-pip.py && \
 	python2 ./get-pip.py && \
