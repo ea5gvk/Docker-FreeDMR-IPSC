@@ -33,4 +33,10 @@ python /opt/DMRlink/IPSC_Bridge.py -c /opt/dmrlink.cfg -b /opt/IPSC_Bridge.cfg &
 cd /opt/HBLink
 python /opt/HBLink/HB_Bridge.py -c /opt/hblink.cfg -b /opt/HB_Bridge.cfg &
 cd /opt/DMRGateway
+
+if [$DMRG_DISABLEDIAL == 1] 
+	then
+		cp /opt/DMRGateway.ini.disabledial /opt/DMRGateway.ini
+	fi
 /opt/DMRGateway/DMRGateway /opt/DMRGateway.ini
+	
