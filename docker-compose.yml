@@ -49,12 +49,14 @@ services:
           # Note there are some issues with both slots
           # at this time.
           # Slot 2 is setup to work with dial-a-tg **only**
-          - HB_SLOTS=1
+          - HB_SLOTS=3
           #Configure Repeater server side (DMRGateway)
           #Put an Options line here to configure static TGs etc
           - 'DMRG_OPTIONS='
           #Target server
           - DMRG_TARGET=
+          #Disable dial-a-tg on slot 2
+          - DMRG_DISABLEDIAL=0
         image: 'hacknix/freedmr-ipsc:latest'
         #Container will persist over reboots
         restart: "unless-stopped"
