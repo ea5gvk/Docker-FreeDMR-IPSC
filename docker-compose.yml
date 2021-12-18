@@ -57,6 +57,9 @@ services:
           - DMRG_TARGET=
           #Disable dial-a-tg on slot 2
           - DMRG_DISABLEDIAL=0
+          #Add a rewrite to TS1TG9.
+          #Leave emtpy to disable
+          - DMRG_REWRITETS1TG9=
         image: 'hacknix/freedmr-ipsc:latest'
         #Container will persist over reboots
         restart: "unless-stopped"

@@ -1,5 +1,11 @@
 #!/bin/sh
 
+#If we don't wanto to use DIAL
+if [ $DMRG_DISABLEDIAL == 1 ] 
+	then
+		cp /opt/DMRGateway.ini.disabledial /opt/DMRGateway.ini
+	fi
+
 #Substitute enivronment variables into files
 sed -i "s/{{IPSC_MASTER_PEER}}/$IPSC_MASTER_PEER/" /opt/dmrlink.cfg
 sed -i "s/{{IPSC_MASTER_PEER}}/$IPSC_MASTER_PEER/" /opt/dmrlink.cfg
@@ -27,6 +33,12 @@ sed -i "s/{{HB_SLOTS}}/$HB_SLOTS/" /opt/hblink.cfg
 sed -i "s/{{DMRG_OPTIONS}}/$DMRG_OPTIONS/" /opt/DMRGateway.ini
 sed -i "s/{{DMRG_TARGET}}/$DMRG_TARGET/" /opt/DMRGateway.ini
 
+if [ "$DMRG_REWRITETS1TG9" != "" ]
+then
+	sed -i "s/#{{DMRG_REWRITETS1S9}}/$DMRG_REWRITETS1TG9" /opt/DMRGateway.ini
+	sed -i "s/#TGRewrite/TGRewrite" /opt/DMRGateway.ini
+fi
+
 #Run processes
 cd /opt/DMRlink/
 python /opt/DMRlink/IPSC_Bridge.py -c /opt/dmrlink.cfg -b /opt/IPSC_Bridge.cfg & 
@@ -34,9 +46,5 @@ cd /opt/HBLink
 python /opt/HBLink/HB_Bridge.py -c /opt/hblink.cfg -b /opt/HB_Bridge.cfg &
 cd /opt/DMRGateway
 
-if [$DMRG_DISABLEDIAL == 1] 
-	then
-		cp /opt/DMRGateway.ini.disabledial /opt/DMRGateway.ini
-	fi
 /opt/DMRGateway/DMRGateway /opt/DMRGateway.ini
 	
