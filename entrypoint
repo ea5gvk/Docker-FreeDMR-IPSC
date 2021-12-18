@@ -35,6 +35,7 @@ sed -i "s/{{DMRG_TARGET}}/$DMRG_TARGET/" /opt/DMRGateway.ini
 
 if [ "$DMRG_REWRITETS1TG9" != "" ]
 then
+	echo 'Setting TS1 rewrite 23590 <-> 9...' 
 	sed -i "s/{{DMRG_REWRITETS1S9}}/$DMRG_REWRITETS1TG9" /opt/DMRGateway.ini
 	sed -i "s/#TGRewrite=/TGRewrite=" /opt/DMRGateway.ini
 fi
