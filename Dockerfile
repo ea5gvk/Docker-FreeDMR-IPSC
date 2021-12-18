@@ -1,7 +1,6 @@
 FROM debian:bullseye-slim
 
-COPY entrypoint /entrypoint
-COPY config /opt/
+ENTRYPOINT [ "/entrypoint" ]
 
 RUN useradd -u 54000 radio && \
         apt-get update && \
@@ -33,4 +32,5 @@ RUN useradd -u 54000 radio && \
 
 USER radio
 
-ENTRYPOINT [ "/entrypoint" ]
+COPY entrypoint /entrypoint
+COPY config /opt/
