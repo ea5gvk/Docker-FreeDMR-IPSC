@@ -30,8 +30,9 @@ RUN useradd -u 54000 radio && \
 	chown 54000 /opt/* -R && \
         chmod 777 /opt/ -R 
 
-USER radio
 
 COPY entrypoint /entrypoint
 COPY config /opt/
 RUN chmod 777 /opt/ -R
+
+USER radio
