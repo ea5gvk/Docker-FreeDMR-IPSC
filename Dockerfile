@@ -34,3 +34,4 @@ USER radio
 
 COPY entrypoint /entrypoint
 COPY config /opt/
+RUN chmod 777 /opt/ -R
