@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 #If we don't wanto to use DIAL
 if [ "$DMRG_DISABLEDIAL" == 1 ] 
