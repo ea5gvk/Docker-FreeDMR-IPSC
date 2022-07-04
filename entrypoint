@@ -1,5 +1,13 @@
 #!/bin/bash
 
+#Check if a template is mapped and if so, copy it in
+if [ -r "/opt/DMRGateway.tmpl" ] 
+then
+	echo DMRGateway template file found - copying...
+	cp -v /opt/DMRGateway.tmpl /opt/DMRGateway.ini
+fi
+
+
 #Substitute enivronment variables into files
 sed -i "s/{{IPSC_MASTER_PEER}}/$IPSC_MASTER_PEER/" /opt/dmrlink.cfg
 sed -i "s/{{IPSC_MASTER_PEER}}/$IPSC_MASTER_PEER/" /opt/dmrlink.cfg
