@@ -62,15 +62,18 @@ cd /opt/DMRGateway
 while :
 do
         echo tick-tock...
+	export 
         if [[ -v DMRLINK_IPSC_Bridge  ]]
 	then 
+	echo Variable found
 		if (( $DMRLINK_IPSC_Bridge > 0 ))
        		then
                 	echo IPSC_Bridge has peers - starting DMRGateway...
                 	/opt/DMRGateway/DMRGateway /opt/DMRGateway.ini &
 			PID=$!
         	else
-                	if [[ -v PID ]]
+                	echo Kill DMRGateway if running...
+			if [[ -v PID ]]
 			then
 				echo IPSC_Bridge has no peers. Killing DMRGateway...
                 		kill PID
