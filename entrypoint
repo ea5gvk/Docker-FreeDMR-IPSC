@@ -58,5 +58,25 @@ cd /opt/HBLink
 python /opt/HBLink/HB_Bridge.py -c /opt/hblink.cfg -b /opt/HB_Bridge.cfg &
 cd /opt/DMRGateway
 
-/opt/DMRGateway/DMRGateway /opt/DMRGateway.ini
-	
+
+while :
+do
+        echo tick-tock...
+        if [[ -v DMRLINK_IPSC_Bridge  ]]
+	then 
+		if (( $DMRLINK_IPSC_Bridge > 0 ))
+       		then
+                	echo IPSC_Bridge has peers - starting DMRGateway...
+                	/opt/DMRGateway/DMRGateway /opt/DMRGateway.ini &
+			PID=$!
+        	else
+                	if [[ -v PID ]]
+			then
+				echo IPSC_Bridge has no peers. Killing DMRGateway...
+                		kill PID
+				unset PID
+			fi
+        	fi
+	fi
+        sleep 10
+done
