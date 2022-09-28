@@ -32,7 +32,8 @@ RUN useradd -u 54000 radio && \
 	chown 54000 /opt/* -R && \
         chmod 777 /opt/ -R && \
 	mkdir /usersettings && \
-	chown radio /usersettings && \
+	touch /usersettings/a.txt && \
+	chown -R 54000 /usersettings && \
 	echo Done 
 
 
