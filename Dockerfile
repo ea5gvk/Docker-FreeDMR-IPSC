@@ -31,7 +31,6 @@ RUN useradd -u 54000 radio && \
 	rm -rvf /var/cache/apt/archives/*  && \
 	chown 54000 /opt/* -R && \
         chmod 777 /opt/ -R && \
-	chown  radio /statefiles/ && \
 	echo Done 
 
 
