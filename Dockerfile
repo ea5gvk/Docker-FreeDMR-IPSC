@@ -2,7 +2,7 @@ FROM debian:bullseye-slim
 
 ENTRYPOINT [ "/entrypoint" ]
 
-VOLUME /statefiles/
+VOLUME /statefiles
 
 RUN useradd -u 54000 radio && \
         apt-get update && \
