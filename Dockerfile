@@ -2,6 +2,8 @@ FROM debian:bullseye-slim
 
 ENTRYPOINT [ "/entrypoint" ]
 
+VOLUME /statefiles/
+
 RUN useradd -u 54000 radio && \
         apt-get update && \
         apt-get install -y  git gcc g++ python2 python2-dev wget make && \
@@ -28,7 +30,9 @@ RUN useradd -u 54000 radio && \
 	apt-get -y purge && \
 	rm -rvf /var/cache/apt/archives/*  && \
 	chown 54000 /opt/* -R && \
-        chmod 777 /opt/ -R 
+        chmod 777 /opt/ -R && \
+	chown  radio /statefiles/ && \
+	echo Done 
 
 
 COPY entrypoint /entrypoint

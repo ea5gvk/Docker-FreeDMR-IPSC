@@ -62,7 +62,10 @@ cd /opt/DMRGateway
 while :
 do
         echo tick-tock...
-	export 
+	if [[ -f "/statefiles/IPSC_Bride.state" ]]
+	then
+		DMRLINK_IPSC_Bridge = `cat /statefiles/IPSC_Bridge.state`
+	fi
         if [[ -v DMRLINK_IPSC_Bridge  ]]
 	then 
 	echo Variable found
