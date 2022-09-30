@@ -29,11 +29,11 @@ RUN useradd -u 54000 radio && \
 	apt-get -y autoremove && \
 	apt-get -y purge && \
 	rm -rvf /var/cache/apt/archives/*  && \
-	chown 54000 /opt/* -R && \
+	chown radio /opt/* -R && \
         chmod 777 /opt/ -R && \
-	mkdir /usersettings && \
-	touch /usersettings/a.txt && \
-	chown -R 54000 /usersettings && \
+	mkdir /statefiles && \
+	touch /statefiles/a.txt && \
+	chown -R radio /statefiles && \
 	echo Done 
 
 
