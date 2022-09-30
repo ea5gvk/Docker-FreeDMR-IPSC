@@ -64,7 +64,7 @@ do
         echo tick-tock...
 	if [[ -f "/statefiles/IPSC_Bridge.state" ]]
 	then
-		DMRLINK_IPSC_Bridge = `cat /statefiles/IPSC_Bridge.state`
+		DMRLINK_IPSC_Bridge==$(</statefiles/IPSC_Bridge.state)
 	fi
         if [[ -v DMRLINK_IPSC_Bridge  ]]
 	then 
