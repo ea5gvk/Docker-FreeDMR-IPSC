@@ -79,10 +79,10 @@ do
 			if [[ -v PID ]]
 			then
 				echo IPSC_Bridge has no peers. Killing DMRGateway...
-                		kill PID
+                		kill $PID
 				unset PID
 			fi
         	fi
 	fi
-        sleep 10
+        sleep 60
 done
