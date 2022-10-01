@@ -71,9 +71,12 @@ do
 	echo Variable found
 		if (( $DMRLINK_IPSC_Bridge > 0 ))
        		then
-                	echo IPSC_Bridge has peers - starting DMRGateway...
-                	/opt/DMRGateway/DMRGateway /opt/DMRGateway.ini &
-			PID=$!
+                	if ! [[ -v PID ]]
+			then
+				echo IPSC_Bridge has peers - starting DMRGateway...
+                		/opt/DMRGateway/DMRGateway /opt/DMRGateway.ini &
+				PID=$!
+			fi
         	else
                 	echo Kill DMRGateway if running...
 			if [[ -v PID ]]
