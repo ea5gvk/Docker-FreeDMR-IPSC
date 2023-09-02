@@ -19,6 +19,16 @@ sed -i "s/{{IPSC_TS2}}/$IPSC_TS2/" /opt/dmrlink.cfg
 sed -i "s/{{IPSC_RADIO_ID}}/$IPSC_RADIO_ID/" /opt/dmrlink.cfg
 sed -i "s/{{IPSC_AUTH_KEY}}/$IPSC_AUTH_KEY/" /opt/dmrlink.cfg
 
+#Enable auth if key is set
+if [ "$IPSC_AUTH_KEY" != "" ]
+then
+	echo 'Enabling IPSC Authentication...'
+	sed -i "s/{{IPSC_AUTH_ENABLED}}/True/" /opt/dmrlink.cfg
+else
+	echo 'Disabling IPSC Authentication due to null key...'
+	sed -i "s/{{IPSC_AUTH_ENABLED}}/False/" /opt/dmrlink.cfg
+fi
+
 
 sed -i "s/{{HB_CALLSIGN}}/$HB_CALLSIGN/" /opt/hblink.cfg
 sed -i "s/{{HB_RADIO_ID}}/$HB_RADIO_ID/" /opt/hblink.cfg
