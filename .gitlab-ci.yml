@@ -24,7 +24,7 @@ build-dev:       # This job runs in the build stage, which runs first.
     - echo "Compiling the code..."
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
     #- docker buildx build --no-cache -t gitlab.hacknix.net:5050/hacknix/docker-freedmr-ipsc:development-latest --platform linux/arm/v7,linux/amd64,linux/i386,linux/arm64 --push .
-    - docker buildx build --no-cache  -t $CI_REGISTRY/hacknix/docker-freedmr-ipsc:development-latest --platform linux/amd64,linux/i386,linux/arm64 --push .
+    - docker buildx build --no-cache  -t $CI_REGISTRY/hacknix/docker-freedmr-ipsc:development-latest --platform linux/amd64,linux/i386 --push .
 
 
 
